@@ -116,6 +116,49 @@
   
     
       <article
+id="post-常用css收集"
+class="article article-type-post"
+>
+
+
+
+<div class="article-inner">
+    
+
+    <div class="article-body">
+    <header class="article-title">
+        <a href="/2022/%E5%B8%B8%E7%94%A8css%E6%94%B6%E9%9B%86.html">常用css收集</a>
+    </header>
+    <div class="article-entry post-inner-html">
+        
+        
+        
+    </div>
+    </div>
+
+    <div class="article-badge">
+        
+        
+    </div>
+
+</div>
+
+<footer class="article-footer">
+    <div class="article-more-info">
+    <div class="article-date">
+  <time datetime="2022-01-11T10:11:01.000Z" itemprop="datePublished">2022-01-11</time>
+</div>
+    
+    
+    </div>
+</footer>
+
+</article>
+
+    
+  
+    
+      <article
 id="post-WP-Astra主题常用整理"
 class="article article-type-post"
 >
@@ -131,9 +174,22 @@ class="article article-type-post"
     </header>
     <div class="article-entry post-inner-html">
         
-        <h2 id="测试小效果怎么样？"><a href="#测试小效果怎么样？" class="headerlink" title="测试小效果怎么样？"></a>测试小效果怎么样？</h2><p>效果看上去还可以吧</p>
-<h3 id="这个-效果不知道从哪儿来的"><a href="#这个-效果不知道从哪儿来的" class="headerlink" title="这个 效果不知道从哪儿来的"></a>这个 效果不知道从哪儿来的</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">echo</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <h2 id="禁止更新"><a href="#禁止更新" class="headerlink" title="禁止更新"></a>禁止更新</h2><p>wp-config.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">define</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'AUTOMATIC_UPDATER_DISABLED'</span><span class="token punctuation">,</span> <span class="token constant boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>functions文件中</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">add_filter</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'pre_site_transient_update_core'</span><span class="token punctuation">,</span>    <span class="token function">create_function</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'$a'</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"return null;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭核心提示</span>
+ 
+<span class="token function">add_filter</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'pre_site_transient_update_plugins'</span><span class="token punctuation">,</span> <span class="token function">create_function</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'$a'</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"return null;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭插件提示</span>
+ 
+<span class="token function">add_filter</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'pre_site_transient_update_themes'</span><span class="token punctuation">,</span>  <span class="token function">create_function</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'$a'</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"return null;"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 关闭主题提示</span>
+ 
+<span class="token function">remove_action</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'admin_init'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'_maybe_update_core'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 禁止 WordPress 检查更新</span>
+ 
+<span class="token function">remove_action</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'admin_init'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'_maybe_update_plugins'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 禁止 WordPress 更新插件</span>
+ 
+<span class="token function">remove_action</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'admin_init'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'_maybe_update_themes'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 禁止 WordPress 更新主题</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         
     </div>
     </div>
@@ -233,6 +289,10 @@ class="article article-type-post"
     <div class="widget-title"><span>Recent Posts</span></div>
     <div class="widget-inner">
       <ul>
+        
+          <li>
+            <a href="/2022/%E5%B8%B8%E7%94%A8css%E6%94%B6%E9%9B%86.html">常用css收集</a>
+          </li>
         
           <li>
             <a href="/2022/WP-Astra%E4%B8%BB%E9%A2%98%E5%B8%B8%E7%94%A8%E6%95%B4%E7%90%86.html">WP-Astra主题常用整理</a>
